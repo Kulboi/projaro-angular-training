@@ -7,22 +7,29 @@
     <div class="col-md-4 col-sm-7">
       <div class="card">
         <div class="card-body">
-          <form>
+          <div class="alert alert-danger" role="alert" *ngIf="error.show == true">
+            {{error.msg}}
+          </div>
+
+          <form #registerForm="ngForm">
             <div class="form-group">
               <label>Fullname</label>
-              <input type="text" class="form-control" name="userFullname" [(ngModel)]="user.fullname">
+              <input type="text" class="form-control" name="userFullname" [(ngModel)]="user.fullname" required>
             </div>
             <div class="form-group">
               <label>Email</label>
-              <input type="text" class="form-control" name="userEmail" [(ngModel)]="user.email">
+              <input type="text" class="form-control" name="userEmail" [(ngModel)]="user.email" required>
             </div>
             <div class="form-group">
               <label>Password</label>
-              <input type="text" class="form-control" name="userPassword" [(ngModel)]="user.password">
+              <input type="password" class="form-control" name="userPassword" [(ngModel)]="user.password" required>
             </div>
 
             <div class="text-center">
-              <button class="btn btn-primary col-md-5" (click)="register()">
+              <button type="button" 
+                      class="btn btn-primary col-md-5" 
+                      (click)="register()"
+                      [disabled]="!registerForm.form.valid || disable == true">
                 Submit
               </button>
             </div>

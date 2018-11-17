@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
+import { AppService } from './../app.service';
 
 @Component({
   selector: 'app-register',
@@ -10,12 +12,14 @@ export class RegisterComponent implements OnInit {
   user: any = {}
   disable: boolean = false
   error: any = {
-    validate: false,
-    msg: '',
-    title: ''
+    show: false,
+    msg: ''
   };
 
-  constructor() { 
+  constructor(
+    private _appservice: AppService,
+    private _router: Router
+  ) { 
   }
 
   ngOnInit() {
@@ -26,7 +30,21 @@ export class RegisterComponent implements OnInit {
     Purpose: Create new user
   */
   register() {
-    console.log(this.user)
+    this.disable = true;
+    this._appservice.register(this.user)
+      .subscribe(res => {
+        this.disable = false;
+        if(res.status == 201) {
+          this._router.navigate(['']);
+        }else {
+          this.error.show = true;
+          this.error.msg = res.content;
+          setTimeout(() => {
+            this.error.show = false;
+            this.error.msg = '';
+          }, 5000);
+        }
+      })
   }
 
 }
