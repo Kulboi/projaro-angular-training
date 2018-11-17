@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
       .subscribe(res => {
         this.disable = false
         if(res.status == 200) {
+          localStorage.setItem(JSON.stringify(res.content));
           this._router.navigate(['/profile'])
         }else {
           this.error.show = true;
