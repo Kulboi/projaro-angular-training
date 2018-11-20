@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
   register() {
     this.disable = true;
     this._appservice.register(this.user)
-      .subscribe(res => {
+      .subscribe((res: any) => {
         this.disable = false;
         if(res.status == 201) {
           this._router.navigate(['']);
@@ -44,6 +44,8 @@ export class RegisterComponent implements OnInit {
             this.error.msg = '';
           }, 5000);
         }
+      }, (err) => {
+        console.log(err)
       })
   }
 

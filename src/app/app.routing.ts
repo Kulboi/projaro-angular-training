@@ -19,7 +19,7 @@ const routes: Routes = [
         data: { title: 'Register component' }
     },
     {
-        path: 'profile',
+        path: 'profile/:id',
         component: ProfileComponent,
         data: { title: 'Profile component' }
     }

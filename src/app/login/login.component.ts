@@ -31,11 +31,11 @@ export class LoginComponent implements OnInit {
   login() {
     this.disable = true
     this._appservice.login(this.user)
-      .subscribe(res => {
+      .subscribe((res: any) => {
         this.disable = false
         if(res.status == 200) {
           localStorage.setItem('konnect_user_data', JSON.stringify(res.content));
-          this._router.navigate(['/profile'])
+          this._router.navigate(['/profile', res.content._id])
         }else {
           this.error.show = true;
           this.error.msg = res.content;
@@ -44,6 +44,13 @@ export class LoginComponent implements OnInit {
             this.error.msg = '';
           }, 5000);
         }
+      }, (err) => {
+        this.error.show = true;
+        this.error.msg = 'You have network issues, kindly connect to an wifi';
+        setTimeout(() => {
+          this.error.show = false;
+          this.error.msg = '';
+        }, 5000);
       })
   }
 
