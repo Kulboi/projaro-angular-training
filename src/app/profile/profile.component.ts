@@ -9,14 +9,17 @@ import { AppService } from './../app.service';
 })
 export class ProfileComponent implements OnInit {
 
-  userId: any = '';
+  userId: String = '';
   user_details: any = {};
   disable: boolean = false;
+  current_section: String = 'profile';
+
   constructor(
     private _appservice: AppService,
     private route: ActivatedRoute
   ) { 
     this.getUserId();
+    this._appservice.authorizeRoute();
   }
 
   ngOnInit() {
@@ -44,6 +47,10 @@ export class ProfileComponent implements OnInit {
           this.userData()
         }
       })
+  }
+
+  changeSection(section) {
+    this.current_section = section;
   }
 
 }

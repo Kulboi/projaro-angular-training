@@ -1,91 +1,31 @@
 <main>
-  <header>
-    <div class="card">
-      <div class="card-body pb-0">
-        <div class="row">
-          <div class="col">
-            <h1>KONNECT</h1>
-          </div>
-        
-          <div class="col-auto">
-            <ul class="list-inline">
-              <li class="list-inline-item mr-4">
-                <a href="">Timeline</a>
-              </li>
-              <li class="list-inline-item mr-4">
-                <a href="">Profile</a>
-              </li>
-              <li class="list-inline-item mr-4">
-                <a href="">Posts</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="">Logout</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-
   <section class="content pt-5">
     <div class="container">
       <div class="row">
         <div class="col-md-4">
           <ul class="list-group">
             <li class="list-group-item">
-              <a href="">PROFILE</a>
+              <a class="text-primary" (click)="changeSection('profile')">PROFILE</a>
             </li>
             <li class="list-group-item">
-              <a href="">OCCUPATION</a>
+              <a (click)="changeSection('occupation')">OCCUPATION</a>
             </li>
             <li class="list-group-item">
-              <a href="">FINANCIAL DATA</a>
+              <a (click)="changeSection('financial')">FINANCIAL DATA</a>
             </li>
             <li class="list-group-item">
-              <a href="">CHANGE PASSWORD</a>
+              <a (click)="changeSection('password')">CHANGE PASSWORD</a>
             </li>
             <li class="list-group-item">
-              <a href="">SETTINGS</a>
+              <a (click)="changeSection('settings')">SETTINGS</a>
             </li>
           </ul>
         </div>
-      
+        
         <div class="col-md-8">
-          <form>
-            <div class="row">
-              <div class="col-md-6 form-group">
-                <label>Fullname</label>
-                <input type="text" class="form-control" name="userFullname" [(ngModel)]="user_details.fullname">
-              </div>
-              <div class="col-md-6 form-group">
-                <label>Email</label>
-                <input type="email" class="form-control" name="userEmail" [(ngModel)]="user_details.email">
-              </div>
-              <div class="col-md-6 form-group">
-                <label>D.O.B</label>
-                <input type="date" class="form-control" name="userDOB" [(ngModel)]="user_details.dob">
-              </div>
-              <div class="col-md-6 form-group">
-                <label>Marital Status</label>
-                <select class="form-control" name="userMarital" [(ngModel)]="user_details.marital">
-                  <option value="single">single</option>
-                  <option value="married">married</option>
-                </select>
-              </div>
-              <div class="col-md-12 form-group">
-                <label>Address</label>
-                <textarea class="form-control" name="userAddress" [(ngModel)]="user_details.address"></textarea>
-              </div>
-            </div>
-          </form>
-
-          <div class="row justify-content-center">
-            <button type="button" 
-                  class="btn btn-primary col-md-5" 
-                  (click)="updateUserProfile()"
-                  [disabled]="disable == true">Update</button>
-          </div>
+          <app-biodata *ngIf="current_section == 'profile'"></app-biodata>
+          
+          <app-occupation *ngIf="current_section == 'occupation'"></app-occupation>
         </div>
       </div>
     </div>

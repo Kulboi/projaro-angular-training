@@ -1,0 +1,31 @@
+<form>
+  <div class="row">
+    <div class="col-md-6 form-group">
+      <label>Fullname</label>
+      <input type="text" class="form-control" name="userFullname" [(ngModel)]="user_details.fullname">
+    </div>
+    <div class="col-md-6 form-group">
+      <label>Email</label>
+      <input type="email" class="form-control" name="userEmail" [(ngModel)]="user_details.email">
+    </div>
+    <div class="col-md-6 form-group">
+      <label>D.O.B</label>
+      <input type="date" class="form-control" name="userDOB" [(ngModel)]="user_details.dob">
+    </div>
+    <div class="col-md-6 form-group">
+      <label>Marital Status</label>
+      <select class="form-control" name="userMarital" [(ngModel)]="user_details.marital">
+        <option value="single">single</option>
+        <option value="married">married</option>
+      </select>
+    </div>
+    <div class="col-md-12 form-group">
+      <label>Address</label>
+      <textarea class="form-control" name="userAddress" [(ngModel)]="user_details.address"></textarea>
+    </div>
+  </div>
+</form>
+
+<div class="row justify-content-center">
+  <button type="button" class="btn btn-primary col-md-5" (click)="updateUserProfile()" [disabled]="disable == true">Update</button>
+</div>

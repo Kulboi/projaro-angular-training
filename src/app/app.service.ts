@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from "rxjs/operators";
+import { Router } from "@angular/router";
 
 const service_base = 'https://projaro-training-api.herokuapp.com/api/';
 // const service_base = 'http://127.0.0.1:5000/api/';
@@ -11,8 +12,20 @@ const service_base = 'https://projaro-training-api.herokuapp.com/api/';
 export class AppService {
 
   constructor(
-    private _http: HttpClient
+    private _http: HttpClient,
+    private _route: Router
   ) { }
+  
+  /*
+    Method: @register
+    Purpose: Register new user
+  */
+  authorizeRoute() {
+    let user = localStorage.getItem('konnect_user_data')
+    if(user == undefined) {
+      this._route.navigate(['/'])
+    }
+  }
 
   /*
     Method: @register

@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
+import { TimelineComponent } from './timeline/timeline.component'
 
 // Routes
 const routes: Routes = [
@@ -22,6 +23,11 @@ const routes: Routes = [
         path: 'profile/:id',
         component: ProfileComponent,
         data: { title: 'Profile component' }
+    },
+    {
+        path: 'timeline/:id',
+        component: TimelineComponent,
+        data: { title: 'Timeline component' }
     }
 ];
 

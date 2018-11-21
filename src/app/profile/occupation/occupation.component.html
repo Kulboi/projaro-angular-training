@@ -1,0 +1,24 @@
+<form>
+  <div class="row">
+    <div class="col-md-6 form-group">
+      <label>Career</label>
+      <input type="text" class="form-control" name="userCareer" [(ngModel)]="user_details.career">
+    </div>
+    <div class="col-md-6 form-group">
+      <label>Place Of Work</label>
+      <input type="text" class="form-control" name="userCareer" [(ngModel)]="user_details.workplace">
+    </div>
+    <div class="col-md-6 form-group">
+      <label>Position</label>
+      <input type="text" class="form-control" name="userPosition" [(ngModel)]="user_details.position">
+    </div>
+    <div class="col-md-6 form-group">
+      <label>Monthly Income</label>
+      <input type="number" class="form-control" name="userDOB" [(ngModel)]="user_details.income">
+    </div>
+  </div>
+</form>
+
+<div class="row justify-content-center">
+  <button type="button" class="btn btn-primary col-md-5" (click)="updateUserProfile()" [disabled]="disable == true">Update</button>
+</div>
