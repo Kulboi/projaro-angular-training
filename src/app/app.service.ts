@@ -60,4 +60,12 @@ export class AppService {
     return this._http.put(`${service_base}user/${id}`, data)
   }
 
+  postData(data) {
+    return this._http.post(`${service_base}post`, data);
+  }
+
+  getData() {
+    return this._http.get(`${service_base}post`);
+  }
+
 }

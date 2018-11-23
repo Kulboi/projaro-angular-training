@@ -10,77 +10,47 @@
       </div>
 
       <div class="col-md-6">
+        <div [ngClass]="['alert', notify.type]" role="alert" *ngIf="notify.show == true">
+          {{notify.msg}}
+        </div>
         <div class="card">
           <div class="card-header p-0">
             <div class="form-group">
-              <textarea cols="30" rows="3" class="form-control" id="post-box" placeholder="Talk yhur mind..."></textarea>
-              <div class="mt-4">
-                <button type="button" class="btn btn-primary float-right">Oya talk!</button>
-              </div>
+              <form #postForm="ngForm">
+                <textarea required cols="30" name="postBox" [(ngModel)]="post_string" rows="3" class="form-control" id="post-box"
+                  placeholder="Talk yhur mind..."></textarea>
+                <div class="mt-4">
+                  <button type="button" class="btn btn-primary float-right" [disabled]="!postForm.form.valid || disable == true"
+                    (click)="postData()">
+                    Oya talk!
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
           <div class="card-body py-0">
-            <div class="row my-4">
+            <div class="row my-4" *ngFor="let post of posts">
               <div class="col-2">
                 <img src="" alt="">
               </div>
 
               <div class="col-10">
                 <h2>
-                  <strong>Ayo Mayokun</strong>
+                  <strong>{{post.User.fullname}}</strong>
                   <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                    Aspernatur vitae esse illo nemo sed. Eum aliquam aspernatur 
-                    et illum a tempora, odit consectetur, delectus minus deserunt 
-                    sit reprehenderit porro corporis.
-                  </p>
-                </h2>
-              </div>
-            </div>
-
-            <div class="row my-4">
-              <div class="col-2">
-                <img src="" alt="">
-              </div>
-            
-              <div class="col-10">
-                <h2>
-                  <strong>Jude Emeka</strong>
-                  <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Aspernatur vitae esse illo nemo sed. Eum aliquam aspernatur
-                    et illum a tempora, odit consectetur, delectus minus deserunt
-                    sit reprehenderit porro corporis.
-                  </p>
-                </h2>
-              </div>
-            </div>
-
-            <div class="row my-4">
-              <div class="col-2">
-                <img src="" alt="">
-              </div>
-            
-              <div class="col-10">
-                <h2>
-                  <strong>Grace Ebele</strong>
-                  <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Aspernatur vitae esse illo nemo sed. Eum aliquam aspernatur
-                    et illum a tempora, odit consectetur, delectus minus deserunt
-                    sit reprehenderit porro corporis.
+                    {{post.content}}
                   </p>
                 </h2>
               </div>
             </div>
           </div>
-        </div> 
+        </div>
       </div>
 
       <div class="col-md-3">
         <div class="card">
           <div class="card-body">
-            
+
           </div>
         </div>
       </div>

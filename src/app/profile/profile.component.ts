@@ -13,7 +13,7 @@ export class ProfileComponent implements OnInit {
   user_details: any = {};
   disable: boolean = false;
   current_section: String = 'profile';
-
+  
   constructor(
     private _appservice: AppService,
     private route: ActivatedRoute
@@ -30,6 +30,7 @@ export class ProfileComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.userId = params.id
     })
+    
   }
 
   userData() {
